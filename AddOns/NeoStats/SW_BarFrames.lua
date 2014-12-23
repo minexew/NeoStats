@@ -262,7 +262,7 @@ function SW_BarsLayout(pName, changeAll)
 	bAutoWidth = math.floor(((fWidth - 10 - ((colCount - 1) * SW_BARSEPX))  / colCount));
 	for i,b in ipairs(bs) do
 		if oP.lastTexture == nil or oP.lastTexture ~= bSet["BT"] or changeAll then
-			b:SetStatusBarTexture("Interface\\AddOns\\SW_Stats\\images\\b"..bSet["BT"]);
+			b:SetStatusBarTexture("Interface\\AddOns\\NeoStats\\images\\b"..bSet["BT"]);
 		end
 		if i == 1 then
 			fontSize = b:GetFontSize();

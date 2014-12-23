@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://www.blizzard.com/wow/ui/
 ..\FrameXML\UI.xsd">
 	<StatusBar name="SW_BarTemplate" virtual="true" hidden="true">
-		<BarTexture name="$parent_Texture" file="Interface\AddOns\SW_Stats\images\b3" />
+		<BarTexture name="$parent_Texture" file="Interface\AddOns\NeoStats\images\b3" />
 		<Size>
 			<AbsDimension x="128" y="10" />
 		</Size>
@@ -62,7 +62,7 @@
 				</FontString>
 			</Layer>
 			<Layer level="BACKGROUND">
-				<Texture name="$parent_Texture" file="Interface\AddOns\SW_Stats\images\titleBar">
+				<Texture name="$parent_Texture" file="Interface\AddOns\NeoStats\images\titleBar">
 					<Color r="1" g="0" b="0" a="1" />
 					<Anchors>
 						<Anchor point="TOPLEFT" />

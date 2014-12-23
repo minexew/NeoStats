@@ -28,7 +28,7 @@
 				end
 			</OnShow>
 		</Scripts>
-		<Backdrop bgFile="Interface\AddOns\SW_Stats\images\back" edgeFile="Interface\Tooltips\UI-Tooltip-Border"
+		<Backdrop bgFile="Interface\AddOns\NeoStats\images\back" edgeFile="Interface\Tooltips\UI-Tooltip-Border"
 			tile="true">
 			<TileSize>
 				<AbsValue val="32" />
@@ -110,7 +110,7 @@
 						</Anchors>
 						<Layers>
 							<Layer level="BACKGROUND">
-								<Texture name="$parent_Texture" file="Interface\AddOns\SW_Stats\images\sync">
+								<Texture name="$parent_Texture" file="Interface\AddOns\NeoStats\images\sync">
 									<Color r="0" g="1" b="0" a="1" />
 									<Anchors>
 										<Anchor point="TOPLEFT" />

@@ -135,7 +135,7 @@
 				</Scripts>
 				<Layers>
 					<Layer level="ARTWORK">
-						<Texture name="$parentTexture" file="Interface\Addons\SW_Stats\images\SW_Icon">
+						<Texture name="$parentTexture" file="Interface\Addons\NeoStats\images\SW_Icon">
 							<Size>
 								<AbsDimension x="22" y="22" />
 							</Size>

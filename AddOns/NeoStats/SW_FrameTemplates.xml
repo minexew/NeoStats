@@ -135,7 +135,7 @@
 				</Anchors>
 				<Layers>
 					<Layer level="BACKGROUND">
-						<Texture name="$parent_Color" file="Interface\AddOns\SW_Stats\images\swatch" alphaMode="ADD">
+						<Texture name="$parent_Color" file="Interface\AddOns\NeoStats\images\swatch" alphaMode="ADD">
 							<Anchors>
 								<Anchor point="TOPLEFT">
 									<Offset>
@@ -317,7 +317,7 @@
 				<Scripts>
 					<OnMouseUp>HideUIPanel(this:GetParent():GetParent());</OnMouseUp>
 					<OnLoad>SW_RoundButtonRegister(this, {1,0,0,1}, "X");
-						this:SetIcons("Interface\\AddOns\\SW_Stats\\images\\bIconSX","Interface\\AddOns\\SW_Stats\\images\\bIconSXH");
+						this:SetIcons("Interface\\AddOns\\NeoStats\\images\\bIconSX","Interface\\AddOns\\NeoStats\\images\\bIconSXH");
 						table.insert(SW_Registered_BF_TitleButtons, this:GetName());
 					</OnLoad>
 				</Scripts>
@@ -360,7 +360,7 @@
 		</Anchors>
 		<Layers>
 			<Layer level="BACKGROUND">
-				<Texture file="Interface\AddOns\SW_Stats\images\corner" alphaMode="ADD">
+				<Texture file="Interface\AddOns\NeoStats\images\corner" alphaMode="ADD">
 					<Anchors>
 						<Anchor point="TOPLEFT">
 							<Offset>
@@ -577,7 +577,7 @@
 				</Anchors>
 				<Layers>
 					<Layer level="BACKGROUND">
-						<Texture name="$parent_Texture" file="Interface\AddOns\SW_Stats\images\buttonD"></Texture>
+						<Texture name="$parent_Texture" file="Interface\AddOns\NeoStats\images\buttonD"></Texture>
 					</Layer>
 					<Layer level="ARTWORK">
 						<FontString name="$parent_Text" inherits="GameFontNormalSmall">
@@ -585,7 +585,7 @@
 								<Anchor point="CENTER" />
 							</Anchors>
 						</FontString>
-						<Texture name="$parent_TextureIcon" file="Interface\AddOns\SW_Stats\images\bIconS"></Texture>
+						<Texture name="$parent_TextureIcon" file="Interface\AddOns\NeoStats\images\bIconS"></Texture>
 					</Layer>
 				</Layers>
 			</Frame>
@@ -596,7 +596,7 @@
 				</Anchors>
 				<Layers>
 					<Layer level="BACKGROUND">
-						<Texture name="$parent_Texture" file="Interface\AddOns\SW_Stats\images\buttonL"></Texture>
+						<Texture name="$parent_Texture" file="Interface\AddOns\NeoStats\images\buttonL"></Texture>
 					</Layer>
 					<Layer level="ARTWORK">
 						<FontString name="$parent_Text" inherits="GameFontNormalSmall" text="E">
@@ -604,7 +604,7 @@
 								<Anchor point="CENTER" />
 							</Anchors>
 						</FontString>
-						<Texture name="$parent_TextureIcon" file="Interface\AddOns\SW_Stats\images\bIconSH"></Texture>
+						<Texture name="$parent_TextureIcon" file="Interface\AddOns\NeoStats\images\bIconSH"></Texture>
 					</Layer>
 				</Layers>
 			</Frame>

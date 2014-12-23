@@ -10,7 +10,7 @@
 
 SW_RootSlashes = {"/swstats", "/sws"};
 
-SW_VERSION = "1.5.3";
+SW_VERSION = "1.6.0";
 
 -- 1.4.2 Found a chineese localization through google that needs a different pre filter so i added this
 -- and added a localization for it 
