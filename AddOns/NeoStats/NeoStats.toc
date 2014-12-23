@@ -1,8 +1,8 @@
 ## Interface: 11100
-## Title: SW_Stats
-## Author: Artack (Madmortem EU DE) artack@hauswiedmann.de
-## Version: 1.5.3
-## Notes: Shadow Warrior Damage Stats
+## Title: NeoStats
+## Author: Artack (Madmortem EU DE) artack@hauswiedmann.de, minexew minexew@gmail.com
+## Version: 1.6.0
+## Notes: Shadow Warrior Damage Stats: Reloaded
 ## Dependencies:
 ## OptionalDeps: ButtonHole
 ## SavedVariablesPerCharacter: SW_Settings, SW_S_Details, SW_S_Healed, SW_S_SpellInfo, SW_S_ManaUsage, SW_PetInfo, SW_RPS, SW_Sync_MsgTrack
