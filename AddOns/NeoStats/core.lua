@@ -1393,20 +1393,28 @@ function SW_Stats_OnEvent()
 			end
 		end
 	
-		
+        if SW_Settings["IconPosition"] == nil then
+            SW_Settings["IconPosition"] = 95
+        end
+
+        if SW_Settings["IconRadius"] == nil then
+            SW_Settings["IconRadius"] = 78
+        end
+
 		if ButtonHole then
 			ButtonHole.application.RegisterMod({id="SW_STATS_BH_HOOK", 
-                                        name="SW Stats", 
-                                        tooltip="SW Stats", 
+                                        name="NeoStats", 
+                                        tooltip="NeoStats", 
                                         buttonFrame="SW_IconFrame", 
-                                        updateFunction="SW_UpdateIconPos"});
+                                        updateFunction="SW_IconFrame_UpdatePosition"});
         else
-			SW_UpdateIconPos();
+			SW_IconFrame_UpdatePosition();
 		end
-		
+        
 		--1.5.3 default color mechaniks changed
+		-- TODO: redo this bullshit
 		if SW_Settings["Colors"]["TitleBars"] == nil then
-			SW_Settings["Colors"]["TitleBars"] = {1,0,0,1};
+			SW_Settings["Colors"]["TitleBars"] = {0,0,0,1};
 		end
 		SW_UpdateTitleColor(SW_Settings["Colors"]["TitleBars"]);
 		if SW_Settings["Colors"]["TitleBarsFont"] == nil then
@@ -1414,7 +1422,7 @@ function SW_Stats_OnEvent()
 		end
 		SW_UpdateTitleTextColor(SW_Settings["Colors"]["TitleBarsFont"]);
 		if SW_Settings["Colors"]["Backdrops"] == nil then
-			SW_Settings["Colors"]["Backdrops"] = {SW_COLOR_ACT["r"],SW_COLOR_ACT["g"],SW_COLOR_ACT["b"],1};
+			SW_Settings["Colors"]["Backdrops"] = {0,0,0,0.5};
 		end
 		SW_UpdateFrameBackdrops(SW_Settings["Colors"]["Backdrops"]);
 		if SW_Settings["Colors"]["MainWinBack"] == nil then

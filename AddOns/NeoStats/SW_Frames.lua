@@ -250,22 +250,11 @@ function SW_TabClick(oTab)
 		end
 	end
 end
-function SW_UpdateIconPos() 
-	local ang = 20;
-	local r = 80;
-	if SW_Settings["SW_IconPos"] ~= nil then
-		ang = SW_Settings["SW_IconPos"];
-	end
-	if SW_Settings["SW_IconPosR"] ~= nil then
-		r = SW_Settings["SW_IconPosR"];
-	end
-	
-	SW_IconFrame:SetPoint("TOPLEFT", "Minimap", "TOPLEFT", 58 - (r * cos(ang)), (r * sin(ang)) - 58);
-end
+
 function SW_DoLayout()
 	SW_TabLayoutRegisterd();
 	SW_ChkLayoutRegisterd();
-	SW_UpdateIconPos()
+	SW_IconFrame_UpdatePosition()
 end
 
 function SW_InitColorSwatch(cs)
@@ -329,14 +318,14 @@ end
 function SW_InitRoundButton(b)
 	b.NormalF = getglobal(b:GetName().."_Normal");
 	b.HighlightF = getglobal(b:GetName().."_Highlight");
-	b.NormalT = getglobal(b:GetName().."_Normal_Texture");
-	b.HighlightT = getglobal(b:GetName().."_Highlight_Texture");
+	--b.NormalT = getglobal(b:GetName().."_Normal_Texture");
+	--b.HighlightT = getglobal(b:GetName().."_Highlight_Texture");
 	b.NormalText = getglobal(b:GetName().."_Normal_Text");
 	b.HighlightText = getglobal(b:GetName().."_Highlight_Text");
 	b.NormalIcon = getglobal(b:GetName().."_Normal_TextureIcon");
 	b.HighlightIcon = getglobal(b:GetName().."_Highlight_TextureIcon");
-	b.NormalT:SetVertexColor(0,1,0,1);
-	b.HighlightT:SetVertexColor(0,1,0,1);
+	--b.NormalT:SetVertexColor(0,1,0,1);
+	--b.HighlightT:SetVertexColor(0,1,0,1);
 	b.NormalIcon:Hide();
 	b.HighlightIcon:Hide();
 	
@@ -345,10 +334,12 @@ function SW_InitRoundButton(b)
 		self.NormalIcon:SetTexture(normalTex);
 		
 		if highlightTex == nil then
-			self.NormalIcon:SetTexture(normalTex);
+			self.HighlightIcon:SetTexture(normalTex);
 		else
 			self.HighlightIcon:SetTexture(highlightTex);
 		end
+		--self.NormalT:Hide();
+		--self.HighlightT:Hide();
 		self.NormalIcon:Show();
 		self.HighlightIcon:Show();
 		self.NormalText:Hide();
@@ -359,8 +350,8 @@ end
 function SW_RoundButtonRegister(b, vColor, txt, fColor, fHeight, fForeColor)
 	SW_InitRoundButton(b);
 	if vColor ~= nil then
-		b.NormalT:SetVertexColor(unpack(vColor));
-		b.HighlightT:SetVertexColor(unpack(vColor));
+		--b.NormalT:SetVertexColor(unpack(vColor));
+		--b.HighlightT:SetVertexColor(unpack(vColor));
 	end
 	if txt ~= nil then
 		b.NormalText:SetText(txt);
@@ -370,10 +361,10 @@ function SW_RoundButtonRegister(b, vColor, txt, fColor, fHeight, fForeColor)
 		b.NormalText:SetVertexColor(unpack(fColor));
 		b.HighlightText:SetVertexColor(unpack(fColor));
 	end
-	if fHeight ~= nil then
+	--[[if fHeight ~= nil then
 		b.NormalText:SetTextHeight(fHeight);
 		b.HighlightText:SetTextHeight(fHeight);
-	end
+	end]]
 	if fForeColor == nil then
 		b.NormalText:SetTextColor(1,1,1,1);
 		b.HighlightText:SetTextColor(1,1,1,1);

@@ -6,7 +6,7 @@
 		<Scripts>
 			<OnLoad>this:SetBackdropBorderColor(SW_COLOR_ACT["r"],SW_COLOR_ACT["g"],SW_COLOR_ACT["b"],1);
 				this.swoBarX = 5;
-				this.swoBarY = -26;
+				this.swoBarY = -22;
 				this.swBarSettings = {};
 				--table.insert(SW_Registerd_BF_Titles, this:GetName().."_Title");
 			</OnLoad>
@@ -52,12 +52,12 @@
 				<Anchors>
 					<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
 						<Offset>
-							<AbsDimension x="5" y="-4" />
+							<AbsDimension x="3" y="-4" />
 						</Offset>
 					</Anchor>
 					<Anchor point="BOTTOMRIGHT" relativePoint="TOPRIGHT">
 						<Offset>
-							<AbsDimension x="-5" y="-24" />
+							<AbsDimension x="-3" y="-20" />
 						</Offset>
 					</Anchor>
 				</Anchors>
@@ -124,13 +124,15 @@
 						<Anchors>
 							<Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
 								<Offset>
-									<AbsDimension x="-3" y="-3" />
+									<AbsDimension x="-3" y="0" />
 								</Offset>
 							</Anchor>
 						</Anchors>
 						<Scripts>
 							<OnMouseUp>SW_Settings["SHOWMAIN"] = nil; this:GetParent():GetParent():Hide();</OnMouseUp>
-							<OnLoad>SW_RoundButtonRegister(this, {1,0,0,0.9}, "X");
+							<OnLoad>SW_RoundButtonRegister(this);
+							this:SetIcons("Interface\\AddOns\\NeoStats\\images\\closeButton", 
+								"Interface\\AddOns\\NeoStats\\images\\closeButtonHL")
 							table.insert(SW_Registered_BF_TitleButtons, this:GetName());</OnLoad>
 						</Scripts>
 					</Frame>
@@ -138,7 +140,7 @@
 						<Anchors>
 							<Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
 								<Offset>
-									<AbsDimension x="-25" y="-3" />
+									<AbsDimension x="-19" y="0" />
 								</Offset>
 							</Anchor>
 						</Anchors>
@@ -156,7 +158,9 @@
 									end
 								end
 							</OnMouseUp>
-							<OnLoad>SW_RoundButtonRegister(this, {1,0,0,0.9}, SW_B_SETTINGS);
+							<OnLoad>SW_RoundButtonRegister(this);
+								this:SetIcons("Interface\\AddOns\\NeoStats\\images\\settingsButton", 
+								"Interface\\AddOns\\NeoStats\\images\\settingsButtonHL")
 								table.insert(SW_Registered_BF_TitleButtons, this:GetName());</OnLoad>
 						</Scripts>
 					</Frame>
@@ -170,7 +174,9 @@
 						</Anchors>
 						<Scripts>
 							<OnMouseUp>SW_ToggleReport(this:GetParent():GetParent():GetName());</OnMouseUp>
-							<OnLoad>SW_RoundButtonRegister(this, {1,0,0,0.9}, SW_B_REPORT);
+							<OnLoad>SW_RoundButtonRegister(this);
+								this:SetIcons("Interface\\AddOns\\NeoStats\\images\\reportButton", 
+								"Interface\\AddOns\\NeoStats\\images\\reportButtonHL")
 							table.insert(SW_Registered_BF_TitleButtons, this:GetName());</OnLoad>
 						</Scripts>
 					</Frame>
@@ -205,21 +211,53 @@
 				</Frames>
 			</Frame>
 			<Frame name="$parent_Selector" hidden="false">
-				<Size>
+				<!--<Size>
 					<AbsDimension x="135" y="50" />
-				</Size>
+				</Size>-->
+				<Scripts>
+					<OnLoad>
+						local scTarget = this:GetName().."_Texture";
+						getglobal(scTarget):SetVertexColor(1,0,0,1);
+						--scTarget = this:GetName().."_Text";
+						--getglobal(scTarget):SetTextColor(1,1,1,1);
+						table.insert(SW_Registerd_BF_Titles, this:GetName());
+					</OnLoad>
+				</Scripts>
 				<Anchors>
-					<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT">
+					<!--<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT">
 						<Offset>
-							<AbsDimension x="10" y="0" />
+							<AbsDimension x="0" y="0" />
 						</Offset>
 					</Anchor>
-					<Anchor point="TOPRIGHT" relativePoint="BOTTOMRIGHT">
+					<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT">
 						<Offset>
-							<AbsDimension x="-10" y="0" />
+							<AbsDimension x="0" y="0" />
+						</Offset>
+					</Anchor>-->
+
+					<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="3" y="20" />
+						</Offset>
+					</Anchor>
+					<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT">
+						<Offset>
+							<AbsDimension x="-3" y="4" />
 						</Offset>
 					</Anchor>
 				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture name="$parent_Texture" file="Interface\AddOns\NeoStats\images\titleBar">
+							<Color r="0" g="0" b="0" a="1" />
+							<TexCoords left="0" right="1" top="1" bottom="0" />
+							<Anchors>
+								<Anchor point="TOPLEFT" />
+								<Anchor point="BOTTOMRIGHT" />
+							</Anchors>
+						</Texture>
+					</Layer>
+				</Layers>
 				<Frames>
 					<CheckButton name="SW_OptChk_Running" inherits="SW_OptChk_TT" hidden="false">
 						<Size>
@@ -228,7 +266,7 @@
 						<Anchors>
 							<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
 								<Offset>
-									<AbsDimension x="-5" y="0" />
+									<AbsDimension x="4" y="0" />
 								</Offset>
 							</Anchor>
 						</Anchors>
@@ -1118,20 +1156,20 @@
 				this.chkPerRow = 2;
 			</OnLoad>
 			<OnShow>
-				if ButtonHole and ButtonHole.application.IsOn() then
+				--[[if ButtonHole and ButtonHole.application.IsOn() then
 					SW_GeneralSettingsIconSlider:Hide();
 					SW_GeneralSettingsIconRadiusSlider:Hide();
 				else
 					SW_GeneralSettingsIconSlider:Show();
 					SW_GeneralSettingsIconRadiusSlider:Show();
-				end
+				end]]
 				if SW_BarSettingsFrameV2:IsVisible() then
 					SW_BarSettingsFrameV2:Hide();
 				end
 			</OnShow>
 		</Scripts>
 		<Size>
-			<AbsDimension x="310" y="230" />
+			<AbsDimension x="310" y="210" />
 		</Size>
 		<Anchors>
 			<Anchor point="CENTER" />
@@ -1380,7 +1418,7 @@
 					</OnValueChanged>
 				</Scripts>
 			</Slider>
-			<Slider name="$parentIconSlider" inherits="OptionsSliderTemplate">
+			<!--<Slider name="$parentIconSlider" inherits="OptionsSliderTemplate">
 				<Size>
 					<AbsDimension x="140" y="17" />
 				</Size>
@@ -1452,7 +1490,7 @@
 						
 					</OnValueChanged>
 				</Scripts>
-			</Slider>
+			</Slider>-->
 		</Frames>
 	</Frame>
 	<Frame name="SW_BarSettingsFrameV2" inherits="SW_Frame" enableMouse="true" movable="true"

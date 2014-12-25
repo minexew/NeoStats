@@ -8,8 +8,32 @@
 		</Size>
 		<Layers>
 			<Layer level="OVERLAY">
-				<FontString name="$parent_Text" inherits="GameFontNormalSmall" justifyH="LEFT" />
-				<FontString name="$parent_TextVal" inherits="GameFontNormalSmall" justifyH="RIGHT" />
+				<FontString name="$parent_Text" inherits="SW_BarFont" justifyH="LEFT">
+					<Shadow>
+          				<Color a="0.75" r="0.0" g="0.0" b="0.0" />
+          				<Offset x="1" y="-1" />
+          			</Shadow>
+          			<Anchors>
+                        <Anchor point="LEFT">
+                            <Offset>
+                                <AbsDimension x="2" y="0"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+          		</FontString>
+				<FontString name="$parent_TextVal" inherits="SW_BarFont" justifyH="RIGHT">
+					<Shadow>
+          				<Color a="0.75" r="0.0" g="0.0" b="0.0" />
+          				<Offset x="1" y="-1" />
+          			</Shadow>
+          			<Anchors>
+                        <Anchor point="RIGHT">
+                            <Offset>
+                                <AbsDimension x="-2" y="0"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+          		</FontString>
 			</Layer>
 		</Layers>
 		<Scripts>
@@ -55,15 +79,19 @@
 		</Anchors>
 		<Layers>
 			<Layer level="ARTWORK">
-				<FontString name="$parent_Text" inherits="GameFontNormalSmall" text="SW">
+				<FontString name="$parent_Text" inherits="SW_TitleFont" text="NeoStats">
 					<Anchors>
-						<Anchor point="LEFT" />
+						<Anchor point="LEFT">
+							<Offset>
+								<AbsDimension x="5" y="0" />
+							</Offset>
+						</Anchor>
 					</Anchors>
 				</FontString>
 			</Layer>
 			<Layer level="BACKGROUND">
 				<Texture name="$parent_Texture" file="Interface\AddOns\NeoStats\images\titleBar">
-					<Color r="1" g="0" b="0" a="1" />
+					<Color r="0" g="0" b="0" a="1" />
 					<Anchors>
 						<Anchor point="TOPLEFT" />
 						<Anchor point="BOTTOMRIGHT" />

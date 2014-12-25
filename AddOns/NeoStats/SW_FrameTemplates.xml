@@ -1,35 +1,6 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.blizzard.com/wow/ui/
 ..\FrameXML\UI.xsd">
-	
-	<!--
-	<FontString name="SW_Font" font="Fonts\FRIZQT__.TTF" virtual="true">
-		<FontHeight>
-			<AbsValue val="10" />
-		</FontHeight>
-		<Color r="1.0" g="1.0" b="1.0" />
-	</FontString>
-	<FontString name="SW_FontBar" font="Fonts\FRIZQT__.TTF" virtual="true">
-		<FontHeight>
-			<AbsValue val="9" />
-		</FontHeight>
-		<Color r="1.0" g="1.0" b="1.0" />
-	</FontString>
-	-->
-	
-	<FontString name="SW_Font" inherits="GameFontNormalSmall" virtual="true">
-		<FontHeight>
-			<AbsValue val="10" />
-		</FontHeight>
-		<Color r="1.0" g="1.0" b="1.0" />
-	</FontString>
-	<FontString name="SW_FontBar" inherits="GameFontNormalSmall" virtual="true">
-		<FontHeight>
-			<AbsValue val="9" />
-		</FontHeight>
-		<Color r="1.0" g="1.0" b="1.0" />
-	</FontString>
-	
 	<!-- A simple frame just defined with a border -->
 	<Frame name="SW_Frame" hidden="true" virtual="true">
 		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border"
@@ -281,7 +252,7 @@
 		</Anchors>
 		<Layers>
 			<Layer level="ARTWORK">
-				<FontString name="$parent_Text" inherits="GameFontNormal" text="SW">
+				<FontString name="$parent_Text" inherits="SW_Font" text="SW">
 					<Anchors>
 						<Anchor point="CENTER" />
 					</Anchors>
@@ -576,16 +547,16 @@
 					<Anchor point="BOTTOMRIGHT" />
 				</Anchors>
 				<Layers>
-					<Layer level="BACKGROUND">
+					<!--<Layer level="BACKGROUND">
 						<Texture name="$parent_Texture" file="Interface\AddOns\NeoStats\images\buttonD"></Texture>
-					</Layer>
+					</Layer>-->
 					<Layer level="ARTWORK">
-						<FontString name="$parent_Text" inherits="GameFontNormalSmall">
+						<FontString name="$parent_Text" inherits="SW_Font" text="?">
 							<Anchors>
 								<Anchor point="CENTER" />
 							</Anchors>
 						</FontString>
-						<Texture name="$parent_TextureIcon" file="Interface\AddOns\NeoStats\images\bIconS"></Texture>
+						<Texture name="$parent_TextureIcon"></Texture>
 					</Layer>
 				</Layers>
 			</Frame>
@@ -596,15 +567,15 @@
 				</Anchors>
 				<Layers>
 					<Layer level="BACKGROUND">
-						<Texture name="$parent_Texture" file="Interface\AddOns\NeoStats\images\buttonL"></Texture>
+						<Texture name="$parent_Texture" file="Interface\AddOns\NeoStats\images\roundButton"></Texture>
 					</Layer>
 					<Layer level="ARTWORK">
-						<FontString name="$parent_Text" inherits="GameFontNormalSmall" text="E">
+						<FontString name="$parent_Text" inherits="SW_Font" text="?">
 							<Anchors>
 								<Anchor point="CENTER" />
 							</Anchors>
 						</FontString>
-						<Texture name="$parent_TextureIcon" file="Interface\AddOns\NeoStats\images\bIconSH"></Texture>
+						<Texture name="$parent_TextureIcon"></Texture>
 					</Layer>
 				</Layers>
 			</Frame>

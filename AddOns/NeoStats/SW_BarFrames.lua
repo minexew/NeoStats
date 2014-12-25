@@ -3,7 +3,7 @@
 SW_Bars = {};
 
 SW_BARSEPX = 5;
-SW_BARSEPY = 3;
+SW_BARSEPY = 0;
 
 function SW_BarRegister(oB)
 
@@ -92,8 +92,8 @@ function SW_SetOptTxt(opt)
 		oc = SW_Settings["Colors"]["TitleBars"]
 	end
 	
-	opt.NormalT:SetVertexColor(unpack(oc));
-	opt.HighlightT:SetVertexColor(unpack(oc));
+	--opt.NormalT:SetVertexColor(unpack(oc));
+	--opt.HighlightT:SetVertexColor(unpack(oc));
 	
 end
 
@@ -226,8 +226,8 @@ function SW_UpdateColor(pName)
 	if oc == nil or (oc[1] == 1 and oc[2] == 0 and oc[3] == 0 and oc[4] == 1) then
 		oc = SW_Settings["Colors"]["TitleBars"]
 	end
-	b.NormalT:SetVertexColor(unpack(oc));
-	b.HighlightT:SetVertexColor(unpack(oc));
+	--b.NormalT:SetVertexColor(unpack(oc));
+	--b.HighlightT:SetVertexColor(unpack(oc));
 	
 	for i,b in ipairs(bs) do
 		getglobal(b:GetName().."_Texture"):SetVertexColor(bc[1],bc[2],bc[3],bc[4]);
@@ -257,7 +257,7 @@ function SW_BarsLayout(pName, changeAll)
 	startX = oP.swoBarX;
 	startY = oP.swoBarY;
 	fWidth = oP:GetWidth();
-	fHeight = oP:GetHeight();
+	fHeight = oP:GetHeight() - getglobal(pName .. '_Selector'):GetHeight();
 	
 	bAutoWidth = math.floor(((fWidth - 10 - ((colCount - 1) * SW_BARSEPX))  / colCount));
 	for i,b in ipairs(bs) do
@@ -541,16 +541,16 @@ function SW_UpdateTitleColor(newColor)
 			if SW_Settings["InfoSettings"] and SW_Settings["InfoSettings"][id] then
 				oc = SW_Settings["InfoSettings"][id]["OC"];	
 			end
-			if not oc or (oc[1] == 1 and oc[2] == 0 and oc[3] == 0 and oc[4] == 1) then
+			--[[if not oc or (oc[1] == 1 and oc[2] == 0 and oc[3] == 0 and oc[4] == 1) then
 				--oc = SW_Settings["Colors"]["TitleBars"]
 				tmpTarget = getglobal(k);
 				tmpTarget.NormalT:SetVertexColor(unpack(newColor));
 				tmpTarget.HighlightT:SetVertexColor(unpack(newColor));
-			end
+			end]]
 		else
 			tmpTarget = getglobal(k);
-			tmpTarget.NormalT:SetVertexColor(unpack(newColor));
-			tmpTarget.HighlightT:SetVertexColor(unpack(newColor));
+			--tmpTarget.NormalT:SetVertexColor(unpack(newColor));
+			--tmpTarget.HighlightT:SetVertexColor(unpack(newColor));
 		end
 		
 		
@@ -564,7 +564,10 @@ function SW_UpdateTitleTextColor(newColor)
 	local id = 0;
 	for i, k in ipairs(SW_Registerd_BF_Titles) do
 		tmpTarget = getglobal(k .. "_Text");
-		tmpTarget:SetVertexColor(unpack(newColor));
+
+		if tmpTarget ~= nil then		-- some bars can have no label
+			tmpTarget:SetVertexColor(unpack(newColor));
+		end
 	end
 	local barSettings = SW_GetBarSettings("SW_BarFrame1");
 	

@@ -85,6 +85,9 @@ SW_STR_RV_PASSED =  "|cffffff00[SW Sync]|r |cff00ff00Reset vote passed!|r";
 SW_STR_RV_FAILED = "|cffffff00[SW Sync]|r |cffff5d5dReset vote failed!|r";
 SW_STR_VOTE_WARN = "|cffffff00[SW Sync]|r |cffff5d5dDon't spam votes...|r";
 
+SW_ICON_TOOLTIP_TITLE = "NeoStats 1.6";
+SW_ICON_TOOLTIP_HINT = "Left-click for NeoStats menu.\nMiddle-click to toggle main frame.\nRight-click and drag to move this button.";
+
 --1.5.3
 --Raid DPS Strings
 SW_RDPS_STRS = {
@@ -378,35 +381,35 @@ StaticPopupDialogs["SW_InvalidChan"] = {
 --icon menu
 SW_MiniIconMenu = {
 	{ 
-		["text"] = "SW Stats",
+		["text"] = "NeoStats",
 		["isTitle"] = 1,
 		["justifyH"] = "CENTER",
 		["notCheckable"] = 1,
 	},
 	{ 
-		["textShow"] = "Show Main Window",
-		["textHide"] = "Hide Main Window",
+		["textShow"] = "Main Window",
+		["textHide"] = "Main Window",
 		["checkFrame"] = "SW_BarFrame1",
 		["func"] = SW_ToggleBarFrame,
 		["notCheckable"] = 1,
 	},
 	{ 
-		["textShow"] = "Show Console",
-		["textHide"] = "Hide Console",
+		["textShow"] = "Console",
+		["textHide"] = "Console",
 		["checkFrame"] = "SW_FrameConsole",
 		["func"] = SW_ToggleConsole,
 		["notCheckable"] = 1,
 	},
 	{ 
-		["textShow"] = "Show General Settings",
-		["textHide"] = "Hide General Settings",
+		["textShow"] = "General Settings",
+		["textHide"] = "General Settings",
 		["checkFrame"] = "SW_GeneralSettings",
 		["func"] = SW_ToggleGeneralSettings,
 		["notCheckable"] = 1,
 	},
 	{ 
-		["textShow"] = "Show Sync Settings",
-		["textHide"] = "Hide Sync Settings",
+		["textShow"] = "Sync Settings",
+		["textHide"] = "Sync Settings",
 		["checkFrame"] = "SW_BarSyncFrame",
 		["func"] = SW_ToggleSync,
 		["notCheckable"] = 1,
@@ -434,7 +437,7 @@ SW_MiniIconMenu = {
 
 }
 -- key bindig strings
-BINDING_HEADER_SW_BINDINGS = "SW Stats";
+BINDING_HEADER_SW_BINDINGS = "NeoStats";
 BINDING_NAME_SW_BIND_TOGGLEBARS = "Show/Hide the main window.";
 BINDING_NAME_SW_BIND_CONSOLE = "Show/Hide the console.";
 BINDING_NAME_SW_BIND_PAGE1 = "Show info tab 1";
@@ -475,12 +478,16 @@ SW_DefaultBar = {
 	["IN"] = 1, -- Info type
 	--["BW"] = 128, --bar width 1.4.2 removed
 	["COLC"] = 1; -- columnCount
-	["BH"] = 10,  -- bar height
-	["BC"] = {0,0.8,0,1}, -- bar vertex color
-	["BT"] = 3, -- bar texture num
+	["BH"] = 18,  -- bar height
+	["BC"] = {0.4,0.6,0.8,1}, -- bar vertex color
+	["BT"] = 2, -- bar texture num
 	["BFC"] = {1,1,1,1}; -- bar font color
 	["BFS"] = 10, -- bar font height
 	["OC"] = {1,0,0,1}; -- option button color
+	["UCC"] = true,			-- 1.6.0 use class color by default
+	["ShowRank"] = true,
+	["ShowNumber"] = true,
+	["ShowPercent"] = true,
 };
 -- default color vars
 SW_Default_Colors = {
@@ -738,7 +745,8 @@ SW_SlashCommands = {
 	["reset"] = {	["c"] = "reset",
 					["si"] = "Empty the Stat tables",
 					["aC"] = 0,
-					["f"] = SW_ResetCheck, 
+					--["f"] = SW_ResetCheck, 
+					["f"] = SW_ResetInfo,
 	},
 	["toggleBars"]={["c"] = "bars",
 					["si"] = "Shows or hides the main window.",

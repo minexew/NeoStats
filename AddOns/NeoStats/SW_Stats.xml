@@ -13,6 +13,23 @@
 	<Script file="init.lua" />
 	<Script file="SW_Sync.lua" />
 	<Script file="core.lua" />
+
+	<Font name="SW_BarFont" font="Interface\AddOns\NeoStats\Fonts\FiraSans-SemiBold.ttf" virtual="true">
+    	<FontHeight>
+      		<AbsValue val="12"/>
+    	</FontHeight>
+  	</Font>
+	<Font name="SW_Font" font="Interface\AddOns\NeoStats\Fonts\FiraSans-SemiBold.ttf" virtual="true">
+    	<FontHeight>
+      		<AbsValue val="9"/>
+    	</FontHeight>
+  	</Font>
+  	<Font name="SW_TitleFont" font="Interface\AddOns\NeoStats\Fonts\FiraSans-SemiBold.ttf" virtual="true">
+    	<FontHeight>
+      		<AbsValue val="10"/>
+    	</FontHeight>
+  	</Font>
+
 	<!-- 1.4 Changed Tooltip to have an owner in OnLoad to make it WoW1.10  ready -->
 	<GameTooltip name="SW_SpellHookTT" frameStrata="TOOLTIP" hidden="true" inherits="GameTooltipTemplate"
 		parent="UIParent">
@@ -100,77 +117,6 @@
 				<Scripts>
 					<OnLoad>SW_TabRegister(this, "SW_FrameConsole_Events");</OnLoad>
 				</Scripts>
-			</Frame>
-		</Frames>
-	</Frame>
-	<!-- Thanks asmeroth (ui.worldofwar.net) New button is more blizzard style-->
-	<Frame name="SW_IconFrame" enableMouse="true" hidden="false" parent="Minimap" frameStrata="MEDIUM">
-		<Size>
-			<AbsDimension x="33" y="33" />
-		</Size>
-		<Frames>
-			<Button name="$parent_Button">
-				<Size>
-					<AbsDimension x="24" y="24" />
-				</Size>
-				<Anchors>
-					<Anchor point="TOPLEFT"></Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						SW_IconMenuInit(); SW_ToggleIconMenu();
-					</OnClick>
-					<OnMouseUp>
-						if arg1 == "RightButton" then
-							SW_ToggleBarFrame();
-						end
-					</OnMouseUp>
-					<OnEnter>
-					GameTooltip:SetOwner(this, "ANCHOR_LEFT");
-					GameTooltip:SetText("SW Stats");
-					</OnEnter>
-					<OnLeave>
-					GameTooltip:Hide();
-					</OnLeave>
-				</Scripts>
-				<Layers>
-					<Layer level="ARTWORK">
-						<Texture name="$parentTexture" file="Interface\Addons\NeoStats\images\SW_Icon">
-							<Size>
-								<AbsDimension x="22" y="22" />
-							</Size>
-							<Anchors>
-								<Anchor point="TOPLEFT">
-									<Offset>
-										<AbsDimension x="5" y="-4" />
-									</Offset>
-								</Anchor>
-							</Anchors>
-						</Texture>
-					</Layer>
-					<Layer level="OVERLAY">
-						<Texture file="Interface\Minimap\MiniMap-TrackingBorder">
-							<Size>
-								<AbsDimension x="52" y="52" />
-							</Size>
-							<Anchors>
-								<Anchor point="TOPLEFT" />
-							</Anchors>
-						</Texture>
-					</Layer>
-				</Layers>
-			</Button>
-			<Frame name="$parent_Menu" inherits="UIDropDownMenuTemplate" hidden="true">
-				<Size>
-					<AbsDimension x="10" y="10" />
-				</Size>
-				<Anchors>
-					<Anchor point="TOPLEFT">
-						<Offset>
-							<AbsDimension x="0" y="0" />
-						</Offset>
-					</Anchor>
-				</Anchors>
 			</Frame>
 		</Frames>
 	</Frame>

@@ -13,3 +13,6 @@ SW_BarFrameTemplates.xml
 SW_Stats.xml
 SW_BarFrames.xml
 SW_Voting.lua
+
+SW_IconFrame.xml
+SW_IconFrame.lua
